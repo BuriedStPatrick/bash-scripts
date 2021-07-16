@@ -1,0 +1,53 @@
+#!/bin/zsh
+
+git_delete_branch() {
+  current_branch=$(git branch --show-current)
+  git checkout $@ --quiet 
+  remote=$(git status -sb --porcelain | sed -n "s/^.*\.\.\.\(\S*\)\/.*$/\1/p")
+
+  git checkout $current_branch --quiet
+  git branch -d $@
+
+  if [[ ! -z "${remote// }" ]]
+    then
+      read "yn?Delete on $remote as well? [y/N] "
+      case $yn in
+        [Yy]* ) git push $remote :$@; return;;
+        [Nn]* ) return;;
+        * ) return;;
+      esac
+  fi
+}
+
+git_tree() {
+  git log --graph --decorate --oneline --color | less -R
+}
+
+git_commit_and_push() {
+  git add --all
+  git commit -m "$@"
+  git push
+}
+
+git_create_branch() {
+  git branch $@
+  git checkout $@
+
+  remote=$(git remote | head -1)
+
+  read "yn?Push to $remote as well? [y/N] "
+  case $yn in
+    [Yy]* ) git push -u $remote $@; return;;
+    [Nn]* ) return;;
+    * ) return;;
+  esac
+}
+
+alias p='git push'
+alias pl='git pull'
+alias cb='git_create_branch'
+alias rb='git rebase'
+alias b='git checkout'
+alias db='git_delete_branch'
+alias cap='git_commit_and_push'
+alias gt='git_tree'
