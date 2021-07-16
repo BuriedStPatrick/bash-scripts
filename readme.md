@@ -87,6 +87,13 @@ ca "My commit message"
 c "My commit message"
 ```
 
+### Merge
+
+Never again accidentally create merge commits. In this house we only fast forward! Adds --ff-only flag to stop you from making a huge mistake.
+
+```bash
+m <branchname>
+```
 
 ### Git tree
 
