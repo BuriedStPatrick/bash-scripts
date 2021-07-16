@@ -14,7 +14,7 @@ git_delete_branch() {
   remote=$(git status -sb --porcelain | sed -n "s/^.*\.\.\.\(\S*\)\/.*$/\1/p")
 
   git checkout $current_branch --quiet
-  git branch -d $@
+  git branch -d $@ -D
 
   if [[ ! -z "${remote// }" ]]
     then
