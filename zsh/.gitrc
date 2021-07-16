@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+git_delete_local_stale_branches() {
+  read "y?This will delete all local branches that don't exist remotely. Are you sure? [y/N] "
+  case $y in
+    [Yy]* ) git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D; return;;
+    * ) return;;
+  esac
+}
+
 git_delete_branch() {
   current_branch=$(git branch --show-current)
   git checkout $@ --quiet 
@@ -60,3 +68,4 @@ alias b='git checkout'
 alias db='git_delete_branch'
 alias gt='git_tree'
 alias m='git merge --ff-only'
+alias cr='git_delete_local_stale_branches'

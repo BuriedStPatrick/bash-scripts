@@ -103,3 +103,19 @@ Lil' function to show the current git tree in an interactive scrollable list.
 gt
 ```
 
+### Git clean stale local branches
+
+This is a little dangerous, but very useful sometimes. Deletes all local branches whose remote counter-part is marked as "gone". Meaning, at one point they were tracking a remote branch, but that branch has since been deleted elsewhere. Useful for cleaning up feature-branches that have been merged and deleted in a CI/CD pipeline.
+
+This script will prompt you just to make sure you didn't run it by accident. TODO is having this script output the local branches it's going to delete first.
+
+> This hasn't been tested on repos with multiple remotes. Use at your own discretion!
+
+```bash
+# Long form
+git_delete_local_stale_branches
+
+# Alias (Clean repository). Look, if you have a better name, I'm all ears.
+cr
+```
+
