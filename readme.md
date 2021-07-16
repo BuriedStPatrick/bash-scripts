@@ -4,6 +4,16 @@ Just a bunch of scripts, aliases, and run-commands that I find useful. `.*rc`-fi
 
 ## Git
 
+To use this, you need the .gitrc. Either clone it or just download it directly. After which you source it:
+
+```bash
+# Download .gitrc
+wget -O ~/.gitrc https://raw.githubusercontent.com/BuriedStPatrick/bash-scripts/main/zsh/.gitrc
+
+# Source the script (might want to add this to your profile though)
+source ~/.gitrc
+```
+
 These are in complete random order, very sorry about that. They are also *very* opinionated. I mostly use git whenever I'm in a terminal, and I really don't like typing, which upon further inspection, is probably not great when you're a software developer.
 
 ### Delete branch
