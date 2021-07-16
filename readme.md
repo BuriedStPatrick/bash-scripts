@@ -18,13 +18,11 @@ These are in complete random order, very sorry about that. They are also *very* 
 
 ### Delete branch
 
-Quickly delete a branch with:
+Quickly delete a branch. If a remote version exists, you'll be prompted to delete that as well if you want. This doesn't care about whether your branch has been merged yet, so make sure you really want that branch gone.
 
 ```bash
 db <branchname>
 ```
-
-If a remote version exists, you'll be prompted to delete that as well if you want.
 
 ### Create branch
 
