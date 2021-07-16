@@ -29,6 +29,11 @@ git_commit_and_push() {
   git push
 }
 
+git_commit_all() {
+  git add --all
+  git commit -m $@
+}
+
 git_create_branch() {
   git branch $@
   git checkout $@
@@ -43,11 +48,14 @@ git_create_branch() {
   esac
 }
 
+alias c='git commit -m'
+alias ca='git_commit_all'
+alias cap='git_commit_and_push'
 alias p='git push'
-alias pl='git pull'
+alias pf='git push --force-with-lease'
+alias pl='git pull --rebase'
 alias cb='git_create_branch'
 alias rb='git rebase'
 alias b='git checkout'
 alias db='git_delete_branch'
-alias cap='git_commit_and_push'
 alias gt='git_tree'
