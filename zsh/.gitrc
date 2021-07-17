@@ -57,6 +57,7 @@ git_create_branch() {
 }
 
 alias c='git commit -m'
+alias st='git status'
 alias ca='git_commit_all'
 alias cap='git_commit_and_push'
 alias p='git push'
